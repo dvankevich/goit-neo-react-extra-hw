@@ -2,13 +2,17 @@ import { useDispatch } from "react-redux";
 import { register } from "../../redux/auth/operations";
 import { Button, TextField, Paper } from "@mui/material";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import toast from "react-hot-toast";
 import * as Yup from "yup";
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = ({ name, email, password }) => {
-    dispatch(register({ name, email, password }));
+    dispatch(register({ name, email, password }))
+      .unwrap()
+      .then(() => toast.success("Welcome! Account created."))
+      .catch((err) => toast.error(`Registration failed: ${err}`));
   };
 
   const initialValues = {

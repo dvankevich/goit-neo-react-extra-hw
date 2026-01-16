@@ -6,19 +6,23 @@ import { Delete } from "@mui/icons-material";
 import ConfirmationDialog from "../ConfirmationDialog/ConfirmationDialog";
 import ModalForm from "../ModalForm/ModalForm";
 import { deleteContact, editContact } from "../../redux/contacts/operations";
+import toast from "react-hot-toast";
 
 const Contact = ({ contact }) => {
   const dispatch = useDispatch();
-  const handleDelete = () => dispatch(deleteContact(contact.id));
 
-  const handleEdit = (values) => {
-    dispatch(
-      editContact({
-        id: values.id,
-        name: values.name,
-        number: values.number,
-      }),
-    );
+  const handleDelete = () => {
+    dispatch(deleteContact(contact.id))
+      .unwrap()
+      .then(() => toast.success("Deleted!"))
+      .catch(() => toast.error("Could not delete."));
+  };
+
+  const handleEdit = ({ id, name, number }) => {
+    dispatch(editContact({ id, name, number }))
+      .unwrap()
+      .then(() => toast.success("Updated!"))
+      .catch(() => toast.error("Update failed."));
   };
 
   return (
