@@ -1,13 +1,12 @@
-import { useState } from 'react';
-import { Modal, Button, TextField, Box } from '@mui/material';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
-import { Edit } from '@mui/icons-material';
+import { useState } from "react";
+import { Modal, Button, TextField, Box } from "@mui/material";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import { Edit } from "@mui/icons-material";
 
-// Валідація за допомогою Yup
 const validationSchema = Yup.object({
-  name: Yup.string().required('Name is required'),
-  number: Yup.string().required('Number is required'),
+  name: Yup.string().required("Name is required"),
+  number: Yup.string().required("Number is required"),
 });
 
 const ModalForm = ({
@@ -32,21 +31,21 @@ const ModalForm = ({
         <Box
           sx={{
             width: 400,
-            bgcolor: 'background.paper',
+            bgcolor: "background.paper",
             p: 4,
             borderRadius: 2,
             boxShadow: 24,
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
           }}
         >
           <h2>{title}</h2>
           <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
-            onSubmit={values => {
+            onSubmit={(values) => {
               onSubmit(values);
               handleClose();
             }}

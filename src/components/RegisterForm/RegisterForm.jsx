@@ -1,34 +1,34 @@
-import { useDispatch } from 'react-redux';
-import { register } from '../../redux/auth/operations';
-import { Button, TextField, Paper } from '@mui/material';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
+import { useDispatch } from "react-redux";
+import { register } from "../../redux/auth/operations";
+import { Button, TextField, Paper } from "@mui/material";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
 
-  const handleSubmit = v => {
-    dispatch(register({ name: v.name, email: v.email, password: v.password }));
+  const handleSubmit = ({ name, email, password }) => {
+    dispatch(register({ name, email, password }));
   };
 
   const initialValues = {
-    name: '',
-    email: '',
-    password: '',
+    name: "",
+    email: "",
+    password: "",
   };
 
   const validationSchema = Yup.object().shape({
-    name: Yup.string().required('Username is required'),
-    email: Yup.string().email('Invalid email').required('Email is required'),
+    name: Yup.string().required("Username is required"),
+    email: Yup.string().email("Invalid email").required("Email is required"),
     password: Yup.string()
-      .min(7, 'The password must contain at least 7 characters.')
-      .required('Password is required'),
+      .min(7, "The password must contain at least 7 characters.")
+      .required("Password is required"),
   });
 
   return (
     <Paper
       elevation={3}
-      style={{ padding: '20px', maxWidth: '400px', margin: 'auto' }}
+      style={{ padding: "20px", maxWidth: "400px", margin: "auto" }}
     >
       <Formik
         initialValues={initialValues}
@@ -49,7 +49,7 @@ export const RegisterForm = () => {
               value={values.name}
               error={touched.name && Boolean(errors.name)}
               helperText={<ErrorMessage name="name" />}
-              style={{ marginBottom: '16px' }}
+              style={{ marginBottom: "16px" }}
             />
             <Field
               name="email"
@@ -64,7 +64,7 @@ export const RegisterForm = () => {
               value={values.email}
               error={touched.email && Boolean(errors.email)}
               helperText={<ErrorMessage name="email" />}
-              style={{ marginBottom: '16px' }}
+              style={{ marginBottom: "16px" }}
             />
             <Field
               name="password"
@@ -79,7 +79,7 @@ export const RegisterForm = () => {
               value={values.password}
               error={touched.password && Boolean(errors.password)}
               helperText={<ErrorMessage name="password" />}
-              style={{ marginBottom: '16px' }}
+              style={{ marginBottom: "16px" }}
             />
             <Button variant="contained" color="primary" type="submit" fullWidth>
               Register

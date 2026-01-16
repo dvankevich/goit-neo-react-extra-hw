@@ -1,14 +1,14 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { logOut } from '../../redux/auth/operations';
-import { selectUser } from '../../redux/auth/selectors';
-import { Box, Button, Typography } from '@mui/material';
+import { useDispatch, useSelector } from "react-redux";
+import { Box, Button, Typography } from "@mui/material";
+import { logOut } from "../../redux/auth/operations";
+import { selectUser } from "../../redux/auth/selectors";
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
 
   return (
-    <Box sx={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+    <Box sx={{ display: "flex", alignItems: "center", gap: "16px" }}>
       <Typography variant="body1">Welcome, {user.name}</Typography>
       <Button
         variant="contained"

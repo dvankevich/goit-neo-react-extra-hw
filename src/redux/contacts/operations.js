@@ -1,45 +1,32 @@
-// fetchContacts - одержання масиву контактів (метод GET) запитом. Базовий тип екшену це рядок "contacts/fetchAll".
-// addContact - додавання нового контакту (метод POST). Базовий тип екшену це рядок "contacts/addContact".
-// deleteContact - видалення контакту по ID (метод DELETE). Базовий тип екшену це рядок "contacts/deleteContact".
-
-import axios from 'axios';
-import { createAsyncThunk } from '@reduxjs/toolkit';
-
-// Встановлюємо базову URL-адресу
-// для всіх запитів axios
-//axios.defaults.baseURL = 'https://673f006da9bc276ec4b6b6b0.mockapi.io/';
+import axios from "axios";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchContacts = createAsyncThunk(
-  'contacts/fetchAll',
-  // Використовуємо символ підкреслення як ім'я першого параметра,
-  // тому що в цій операції він нам не потрібен
+  "contacts/fetchAll",
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get('/contacts');
-      // При успішному запиті повертаємо проміс із даними
+      const response = await axios.get("/contacts");
       return response.data;
     } catch (e) {
-      // При помилці запиту повертаємо проміс
-      // який буде відхилений з текстом помилки
       return thunkAPI.rejectWithValue(e.message);
     }
-  }
+  },
 );
 
 export const addContact = createAsyncThunk(
-  'contact/addContact',
+  "contact/addContact",
   async ({ name, number }, thunkAPI) => {
     try {
-      const response = await axios.post('/contacts', { name, number });
+      const response = await axios.post("/contacts", { name, number });
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
-  }
+  },
 );
 
 export const deleteContact = createAsyncThunk(
-  'contact/deleteContact',
+  "contact/deleteContact",
   async (contactId, thunkAPI) => {
     try {
       const response = await axios.delete(`/contacts/${contactId}`);
@@ -47,21 +34,17 @@ export const deleteContact = createAsyncThunk(
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
-  }
+  },
 );
 
 export const editContact = createAsyncThunk(
-  'contact/editContact',
-  async ({ id ,name, number }, thunkAPI) => {
+  "contact/editContact",
+  async ({ id, name, number }, thunkAPI) => {
     try {
-      //console.log("editContact: ",id ,name, number );
-      
       const response = await axios.patch(`/contacts/${id}`, { name, number });
-      //console.log(response);
-      
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
-  }
+  },
 );

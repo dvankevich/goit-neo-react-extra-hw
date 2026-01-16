@@ -1,7 +1,7 @@
-import { useSelector } from 'react-redux';
-import Contact from '../Contact/Contact';
-import { selectFilteredContacts } from '../../redux/filters/selectors';
-import { Box } from '@mui/material';
+import { useSelector } from "react-redux";
+import Contact from "../Contact/Contact";
+import { Box } from "@mui/material";
+import { selectFilteredContacts } from "../../redux/filters/selectors";
 
 const ContactList = () => {
   const visibleContacts = useSelector(selectFilteredContacts);
@@ -11,13 +11,13 @@ const ContactList = () => {
       component="ul"
       sx={{
         padding: 0,
-        margin: '8px 0 0 0',
-        display: 'flex',
-        flexWrap: 'wrap',
-        gap: '16px',
+        margin: "8px 0 0 0",
+        display: "flex",
+        flexWrap: "wrap",
+        gap: "16px",
       }}
     >
-      {visibleContacts.map(contact => (
+      {visibleContacts.map((contact) => (
         <Contact key={contact.id} contact={contact} />
       ))}
     </Box>

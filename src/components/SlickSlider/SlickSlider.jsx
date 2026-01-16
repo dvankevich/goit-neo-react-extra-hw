@@ -1,11 +1,12 @@
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import scr01 from '../../img/s-01-min.png';
-import scr02 from '../../img/s-02-min.png';
-import scr03 from '../../img/s-03-min.png';
-import scr04 from '../../img/s-04-min.png';
-import scr05 from '../../img/s-05-min.png';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+import scr01 from "/images/s-01-min.png";
+import scr02 from "/images/s-02-min.png";
+import scr03 from "/images/s-03-min.png";
+import scr04 from "/images/s-04-min.png";
+import scr05 from "/images/s-05-min.png";
 
 function SlickSlider() {
   const settings = {
@@ -16,7 +17,7 @@ function SlickSlider() {
     autoplay: true,
     speed: 2000,
     autoplaySpeed: 2000,
-    cssEase: 'linear',
+    cssEase: "linear",
   };
 
   const images = [scr01, scr02, scr03, scr04, scr05];
@@ -29,7 +30,7 @@ function SlickSlider() {
             <img
               src={image}
               alt={`Screenshot ${index + 1}`}
-              style={{ width: '100%', height: 'auto' }}
+              style={{ width: "100%", height: "auto" }}
             />
           </div>
         ))}

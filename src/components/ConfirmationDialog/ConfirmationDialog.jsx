@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 import {
   Dialog,
   Button,
@@ -6,10 +6,9 @@ import {
   DialogContent,
   DialogContentText,
   DialogActions,
-} from '@mui/material';
+} from "@mui/material";
 
 function ConfirmationDialog(props) {
-  //local states
   const [open, setOpen] = useState(false);
 
   const showDialog = () => {

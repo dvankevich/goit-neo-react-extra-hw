@@ -1,13 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const slice = createSlice({
-  name: 'filters',
+  name: "filters",
   initialState: {
-    name: '',
+    name: "",
   },
   reducers: {
     changeFilter(state, action) {
-      // ✅ Immer замінить це на операцію оновлення
       state.name = action.payload;
     },
   },

@@ -1,12 +1,12 @@
-import { useDispatch } from 'react-redux';
-import { logIn } from '../../redux/auth/operations';
-import toast from 'react-hot-toast';
-import { Box, Button, TextField } from '@mui/material';
+import { useDispatch } from "react-redux";
+import toast from "react-hot-toast";
+import { Box, Button, TextField } from "@mui/material";
+import { logIn } from "../../redux/auth/operations";
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.currentTarget;
 
@@ -14,14 +14,14 @@ export const LoginForm = () => {
       logIn({
         email: form.elements.email.value,
         password: form.elements.password.value,
-      })
+      }),
     )
       .unwrap()
       .then(() => {
-        toast.success('login success');
+        toast.success("login success");
       })
       .catch(() => {
-        toast.error('login error');
+        toast.error("login error");
       });
 
     form.reset();
@@ -33,11 +33,11 @@ export const LoginForm = () => {
       onSubmit={handleSubmit}
       autoComplete="off"
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
+        display: "flex",
+        flexDirection: "column",
         gap: 2,
         maxWidth: 400,
-        margin: 'auto',
+        margin: "auto",
       }}
     >
       <TextField

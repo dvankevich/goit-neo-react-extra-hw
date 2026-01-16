@@ -1,13 +1,12 @@
-import ContactList from '../../components/ContactList/ContactList';
-import { useEffect } from 'react';
-import SearchBox from '../../components/SearchBox/SearchBox';
-import ContactForm from '../../components/ContactForm/ContactForm';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from '../../redux/contacts/operations';
-// Імпортуємо функції-селектори
-import { selectIsLoading, selectError } from '../../redux/contacts/selectors';
-import { Box, CircularProgress, Typography } from '@mui/material';
-import DocumentTitle from '../../components/DocumentTitle';
+import ContactList from "../../components/ContactList/ContactList";
+import { useEffect } from "react";
+import SearchBox from "../../components/SearchBox/SearchBox";
+import ContactForm from "../../components/ContactForm/ContactForm";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchContacts } from "../../redux/contacts/operations";
+import { selectIsLoading, selectError } from "../../redux/contacts/selectors";
+import { Box, CircularProgress, Typography } from "@mui/material";
+import DocumentTitle from "../../components/DocumentTitle";
 
 function ContactsPage() {
   const dispatch = useDispatch();
@@ -21,23 +20,23 @@ function ContactsPage() {
   return (
     <Box
       sx={{
-        textAlign: 'center',
+        textAlign: "center",
       }}
     >
       <DocumentTitle>Contacts</DocumentTitle>
       <Typography variant="h2" gutterBottom>
         Phonebook
       </Typography>
-      <Box sx={{ marginBottom: '20px' }}>
+      <Box sx={{ marginBottom: "20px" }}>
         {isLoading && !error && <CircularProgress />}
         {error && <Typography color="error">{error}</Typography>}
       </Box>
       <ContactForm />
       <Box
         sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          marginBottom: '20px',
+          display: "flex",
+          justifyContent: "center",
+          marginBottom: "20px",
         }}
       >
         <SearchBox />
