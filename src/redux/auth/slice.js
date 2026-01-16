@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { register, logIn, logOut, refreshUser } from "./operations";
-import toast from "react-hot-toast";
+//import toast from "react-hot-toast";
 
 const authSlice = createSlice({
   name: "auth",
@@ -19,7 +19,7 @@ const authSlice = createSlice({
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
-        toast.success("User successfully created!");
+        //toast.success("User successfully created!");
       })
 
       .addCase(logIn.fulfilled, (state, action) => {
@@ -34,7 +34,7 @@ const authSlice = createSlice({
         state.items = [];
         state.token = null;
         state.isLoggedIn = false;
-        toast.success("User logged out!");
+        //toast.success("User logged out!");
       })
 
       .addCase(refreshUser.pending, (state) => {
@@ -47,7 +47,7 @@ const authSlice = createSlice({
       })
       .addCase(refreshUser.rejected, (state) => {
         state.isRefreshing = false;
-        toast.error("This is an error!");
+        //toast.error("This is an error!");
       });
   },
 });
