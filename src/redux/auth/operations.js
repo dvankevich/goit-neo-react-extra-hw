@@ -21,11 +21,14 @@ export const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.post("/users/signup", credentials);
-      // After successful registration, add the token to the HTTP header
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      //toast.error("Registration error! ", error.message);
+      if (error.response?.status === 400) {
+        return thunkAPI.rejectWithValue(
+          "User already exists or invalid credentials",
+        );
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   },
@@ -40,11 +43,14 @@ export const logIn = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.post("/users/login", credentials);
-      // After successful login, add the token to the HTTP header
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      // Обробка помилки входу (400 часто означає невірні облікові дані)
+      if (error.response?.status === 400) {
+        return thunkAPI.rejectWithValue("Invalid email or password");
+      }
+      return thunkAPI.rejectWithValue("Login failed. Please try again.");
     }
   },
 );
