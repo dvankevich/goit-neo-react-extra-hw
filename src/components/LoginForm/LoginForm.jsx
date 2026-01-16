@@ -19,10 +19,10 @@ export const LoginForm = () => {
       .unwrap()
       .then(() => {
         toast.success("login success");
-      })
-      .catch(() => {
-        toast.error("login error");
       });
+    // .catch(() => {
+    //   toast.error("login error");
+    // });
 
     form.reset();
   };

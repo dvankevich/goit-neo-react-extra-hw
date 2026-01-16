@@ -11,10 +11,10 @@ const ContactForm = () => {
       .unwrap()
       .then(() => {
         toast.success("Contact added successfully!");
-      })
-      .catch(() => {
-        toast.error("Failed to add contact.");
       });
+    // .catch(() => {
+    //   toast.error("Failed to add contact.");
+    // });
   };
 
   return (

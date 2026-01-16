@@ -11,8 +11,8 @@ export const RegisterForm = () => {
   const handleSubmit = ({ name, email, password }) => {
     dispatch(register({ name, email, password }))
       .unwrap()
-      .then(() => toast.success("Welcome! Account created."))
-      .catch((err) => toast.error(`Registration failed: ${err}`));
+      .then(() => toast.success("Welcome! Account created."));
+    //.catch((err) => toast.error(`Registration failed: ${err}`));
   };
 
   const initialValues = {

@@ -29,7 +29,7 @@ function ContactsPage() {
       </Typography>
       <Box sx={{ marginBottom: "20px" }}>
         {isLoading && !error && <CircularProgress />}
-        {error && <Typography color="error">{error}</Typography>}
+        {/* {error && <Typography color="error">{error}</Typography>} */}
       </Box>
       <ContactForm />
       <Box

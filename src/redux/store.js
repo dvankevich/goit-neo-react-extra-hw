@@ -13,6 +13,7 @@ import storage from "redux-persist/lib/storage";
 import contactsReducer from "./contacts/slice";
 import filtersReducer from "./filters/slice";
 import { authReducer } from "./auth/slice";
+import { errorMiddleware } from "./middleware/errorMiddleware";
 
 const authPersistConfig = {
   key: "auth",
@@ -31,7 +32,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }),
+    }).concat(errorMiddleware),
 });
 
 export const persistor = persistStore(store);

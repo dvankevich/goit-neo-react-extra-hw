@@ -14,15 +14,15 @@ const Contact = ({ contact }) => {
   const handleDelete = () => {
     dispatch(deleteContact(contact.id))
       .unwrap()
-      .then(() => toast.success("Deleted!"))
-      .catch(() => toast.error("Could not delete."));
+      .then(() => toast.success("Deleted!"));
+    //.catch(() => toast.error("Could not delete."));
   };
 
   const handleEdit = ({ id, name, number }) => {
     dispatch(editContact({ id, name, number }))
       .unwrap()
-      .then(() => toast.success("Updated!"))
-      .catch(() => toast.error("Update failed."));
+      .then(() => toast.success("Updated!"));
+    //.catch(() => toast.error("Update failed."));
   };
 
   return (
